@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function Home() {
-  return <>Search Repository and Issue tracker App using Github API</>;
+  return (
+    <div className="border border-blue-600">
+      Search Repository and Issue tracker App using Github API
+    </div>
+  );
 }
