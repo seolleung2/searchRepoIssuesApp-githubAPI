@@ -1,9 +1,11 @@
 import React from 'react';
+import { BaseLayout } from '@components/layout';
 
 export default function Home() {
   return (
-    <div className="border border-blue-600">
-      Search Repository and Issue tracker App using Github API
-    </div>
+    <BaseLayout pageTitle="Search Github Repo">
+      <div>Input Component will be displayed</div>
+      <div>Repository List Component will be displayed</div>
+    </BaseLayout>
   );
 }
