@@ -4,14 +4,16 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { BaseLayout } from '@components/layout';
 import { AutoComplete } from '@components/input';
 import { RepositoryItem } from '@Types/repositories';
+import useDebounce from '@hooks/useDebounce';
 import { useRepositories } from '@hooks/api/repositories';
 import { getRepositories } from '@apis/repositories';
 
 export default function Home() {
   const [keyword, setKeyword] = useState<string>('');
+  const debouncedKeyword = useDebounce<string>(keyword);
 
   const { data: repositories } = useRepositories({
-    keyword,
+    keyword: debouncedKeyword,
   });
 
   return (
