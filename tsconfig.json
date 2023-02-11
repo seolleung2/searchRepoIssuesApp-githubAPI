@@ -20,7 +20,8 @@
       "@constants/*": ["constants/*"],
       "@hooks/*": ["hooks/*"],
       "@Types/*": ["types/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@apis/*": ["apis/*"]
     },
     "types": ["@emotion/react/types/css-prop"]
   },

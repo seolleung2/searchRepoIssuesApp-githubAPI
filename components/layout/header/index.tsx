@@ -18,14 +18,14 @@ const Header: FunctionComponent<Props> = ({ pageTitle }) => {
   };
 
   return (
-    <div className="flex h-28 w-full items-center border border-red-500">
+    <div className="flex w-full items-center">
       {route !== '/' ? (
         <FaAngleLeft
           className="cursor-pointer text-6xl text-stone-500 opacity-75 hover:opacity-100"
           onClick={handleBackToMainPage}
         />
       ) : (
-        <BsGithub className="block h-full w-28 border border-red-400 text-3xl text-stone-500 sm:text-6xl" />
+        <BsGithub className="block h-full w-28 text-3xl text-stone-500 sm:text-6xl" />
       )}
       <div className="pl-3 sm:pl-6">
         <h1 className="text-2xl font-semibold sm:text-4xl">{pageTitle}</h1>
