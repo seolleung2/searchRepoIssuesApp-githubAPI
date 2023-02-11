@@ -112,3 +112,13 @@ export interface LicenseType {
   node_id: string;
   html_url: string;
 }
+
+export interface RepositoryDetailItem {
+  id: number;
+  image: string;
+  owner: string;
+  name: string;
+  url: string;
+  description: string;
+  value: string;
+}

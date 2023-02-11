@@ -2,7 +2,8 @@ import React, { FunctionComponent, useRef } from 'react';
 import { Autocomplete } from '@mantine/core';
 import { BsGithub } from 'react-icons/bs';
 import { FaRegTimesCircle } from 'react-icons/fa';
-import { RepositoryItem } from '@Types/repositories';
+import { RepositoryItem, RepositoryDetailItem } from '@Types/repositories';
+import { useAppStore } from '@lib/store';
 import AutoCompleteItem from './AutoCompleteItem';
 
 type Props = {
@@ -16,6 +17,8 @@ const AutoComplete: FunctionComponent<Props> = ({
   keyword,
   setKeyword,
 }) => {
+  const { addRepository, repositoryList } = useAppStore();
+
   const keywordRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (value: string) => {
@@ -25,6 +28,15 @@ const AutoComplete: FunctionComponent<Props> = ({
   const handleClearSearchKeyword = () => {
     setKeyword('');
     keywordRef.current?.focus();
+  };
+
+  const handleRepositorySelect = (item: RepositoryDetailItem) => {
+    if (repositoryList.length < 4) {
+      addRepository(item);
+      return;
+    }
+    // * modal displayed
+    console.log('최대 등록 개수 4개를 초과하였습니다.');
   };
 
   return (
@@ -38,15 +50,19 @@ const AutoComplete: FunctionComponent<Props> = ({
       value={keyword}
       data={(data || []).map((item) => ({
         // ...item,
+        id: item.id,
         image: item.owner.avatar_url,
         owner: item.owner.login,
-        value: item.full_name,
         name: item.name,
+        url: item.html_url,
         description: item.description || 'No description',
+        value: item.full_name,
       }))}
       autoFocus
-      limit={5}
+      limit={10}
+      maxDropdownHeight={220}
       dropdownPosition="bottom"
+      onItemSubmit={handleRepositorySelect}
       filter={(value, item) => {
         return (
           item.name.toLowerCase().includes(value.toLowerCase().trim()) ||
