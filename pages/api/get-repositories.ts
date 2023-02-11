@@ -20,6 +20,7 @@ async function getRepositories({ keyword }: { keyword: string }) {
       {
         params,
         headers: {
+          Authorization: `token ${process.env.GITHUB_API_TOKEN}`,
           accept: 'application/vnd.github+json',
         },
       }
