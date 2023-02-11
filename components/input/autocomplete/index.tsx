@@ -35,7 +35,7 @@ const AutoComplete: FunctionComponent<Props> = ({
       addRepository(item);
       return;
     }
-    // * modal displayed
+    // * modal will be displayed
     console.log('최대 등록 개수 4개를 초과하였습니다.');
   };
 
@@ -60,7 +60,7 @@ const AutoComplete: FunctionComponent<Props> = ({
       }))}
       autoFocus
       limit={10}
-      maxDropdownHeight={220}
+      maxDropdownHeight={270}
       dropdownPosition="bottom"
       onItemSubmit={handleRepositorySelect}
       filter={(value, item) => {

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { BaseLayout } from '@components/layout';
 import { AutoComplete } from '@components/input';
-import { RepositoryItem } from '@Types/repositories';
+import { RepositoryList } from '@components/repository';
+import Instruction from '@components/instruction';
+import { RepositoryItem, RepositoryDetailItem } from '@Types/repositories';
 import { useAppStore } from '@lib/store';
 import useDebounce from '@hooks/useDebounce';
 import { useRepositories } from '@hooks/api/repositories';
@@ -12,12 +14,19 @@ import { getRepositories } from '@apis/repositories';
 export default function Home() {
   const [keyword, setKeyword] = useState<string>('');
   const debouncedKeyword = useDebounce<string>(keyword);
+  const [remainRepositories, setRemainRepositories] = useState<
+    RepositoryDetailItem[]
+  >([]);
 
   const { data: repositories } = useRepositories({
     keyword: debouncedKeyword,
   });
 
   const { repositoryList } = useAppStore();
+
+  useEffect(() => {
+    setRemainRepositories(repositoryList);
+  }, [repositoryList]);
 
   return (
     <BaseLayout pageTitle="Search Github Repo">
@@ -26,7 +35,8 @@ export default function Home() {
         setKeyword={setKeyword}
         data={repositories as RepositoryItem[]}
       />
-      <div>Repository List Component will be displayed</div>
+      <Instruction />
+      <RepositoryList repositories={remainRepositories} />
     </BaseLayout>
   );
 }

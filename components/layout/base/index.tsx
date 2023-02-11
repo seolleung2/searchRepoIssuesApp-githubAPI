@@ -18,7 +18,7 @@ const BaseLayout: FunctionComponent<PropsWithChildren<Props>> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="m-auto flex h-full min-h-screen max-w-[340px] flex-col items-center justify-center border border-blue-500 sm:max-w-[580px]">
+      <main className="m-auto flex h-full min-h-screen max-w-[340px] flex-col items-center justify-center sm:max-w-[580px]">
         <Header pageTitle={pageTitle} />
         <div className="w-full">{children}</div>
       </main>
