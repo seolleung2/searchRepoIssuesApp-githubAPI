@@ -29,11 +29,29 @@ const RepositoryItem: FunctionComponent<Props> = ({ repository }) => {
           />
         </div>
         <div className="relative flex w-full p-2">
-          <div className="w-full">
-            <p className="mb-1 break-all text-sm font-semibold line-clamp-1">
-              {repository.value}
-            </p>
-            <p className="text-xs line-clamp-2">{repository.description}</p>
+          <div className="flex h-[88px] w-full flex-col justify-between">
+            <div className="grow">
+              <p className="mb-1 break-all text-sm font-semibold line-clamp-1">
+                {repository.value}
+              </p>
+              <p className="text-xs line-clamp-2">{repository.description}</p>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Link
+                href={`https://github.com/${repository.value}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span className="block rounded bg-blue-400 py-1.5 px-3 text-xs text-white hover:bg-blue-600">
+                  레포 이동
+                </span>
+              </Link>
+              <Link href={`/${repository.value}`}>
+                <span className="block rounded bg-green-400 py-1.5 px-3 text-xs text-white hover:bg-green-600">
+                  상세 이슈 확인
+                </span>
+              </Link>
+            </div>
           </div>
           <div className="cursor-pointer pl-1.5 text-xl">
             <FaWindowClose
@@ -41,22 +59,6 @@ const RepositoryItem: FunctionComponent<Props> = ({ repository }) => {
               onClick={handleDeleteTodo.bind(null, repository.id)}
             />
           </div>
-          <Link
-            href={`https://github.com/${repository.value}`}
-            rel="noopener noreferrer"
-            target="_blank"
-            className="absolute bottom-1 rounded bg-blue-400 py-1.5 px-3 text-xs text-white hover:bg-blue-600"
-          >
-            레포 이동
-          </Link>
-          <Link
-            href={`https://github.com/${repository.value}`}
-            rel="noopener noreferrer"
-            target="_blank"
-            className="absolute bottom-1 right-20 rounded bg-green-400 py-1.5 px-3 text-xs text-white hover:bg-green-600 sm:right-[312px]"
-          >
-            상세 이슈 확인
-          </Link>
         </div>
       </div>
     </>

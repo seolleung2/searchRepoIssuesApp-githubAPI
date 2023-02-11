@@ -29,17 +29,15 @@ const Header: FunctionComponent<Props> = ({ pageTitle }) => {
       )}
       <div className="pl-3 sm:pl-6">
         <h1 className="text-2xl font-semibold sm:text-4xl">{pageTitle}</h1>
-        {route === '/' && (
-          <p className="">
-            <span className="font-semibold text-slate-500 sm:text-xl">
-              [Repository issue tracker App]
-            </span>{' '}
-            <br />
-            <span className="text-sm text-slate-400 sm:text-base">
-              Let&apos;s search anything you want using Github API!
-            </span>
-          </p>
-        )}
+        <p className="">
+          <span className="font-semibold text-slate-500 sm:text-xl">
+            [Repository issue tracker App]
+          </span>{' '}
+          <br />
+          <span className="text-sm text-slate-400 sm:text-base">
+            Let&apos;s search anything you want using Github API🌷
+          </span>
+        </p>
       </div>
     </div>
   );
