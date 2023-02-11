@@ -12,7 +12,7 @@ async function getRepositories({ keyword }: { keyword: string }) {
     q: keyword || "''",
   };
 
-  if (keyword !== '') params.per_page = 5;
+  if (keyword !== '') params.per_page = 10;
 
   try {
     const response = await axios.get(
