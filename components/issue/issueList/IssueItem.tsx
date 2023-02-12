@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import moment from 'moment';
 import { IssueItemType } from '@Types/issues';
+import Link from 'next/link';
 
 type Props = {
   issueItem: IssueItemType;
@@ -11,8 +12,8 @@ const IssueItem: FunctionComponent<Props> = ({ issueItem }) => {
   const subDate = issueItem.updated_at.substr(0, 10);
 
   return (
-    <>
-      <div className="h-30 flex rounded-md bg-zinc-100 shadow-md shadow-zinc-400">
+    <Link href={issueItem.html_url} rel="noopener noreferrer" target="_blank">
+      <div className="h-30 flex rounded-md bg-zinc-100 shadow-md shadow-zinc-400 hover:bg-zinc-200">
         <Image
           className="w-24 rounded-tl-lg rounded-bl-lg object-cover object-center opacity-100 hover:opacity-80 sm:w-32"
           src={issueItem.user?.avatar_url || '/images/github_image.jpeg'}
@@ -48,7 +49,7 @@ const IssueItem: FunctionComponent<Props> = ({ issueItem }) => {
           </p>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 
