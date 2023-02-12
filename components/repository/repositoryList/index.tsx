@@ -16,7 +16,10 @@ const RepositoryList: FunctionComponent<Props> = ({ repositories }) => {
             <RepositoryItem key={repository.id} repository={repository} />
           ))
         ) : (
-          <div>추가된 레포지토리가 없습니다. 검색을 통해 추가해주세요.</div>
+          <div>
+            추가된 레포지토리가 없습니다. <br />
+            검색을 통해 추가해주세요.
+          </div>
         )}
       </div>
     </>
