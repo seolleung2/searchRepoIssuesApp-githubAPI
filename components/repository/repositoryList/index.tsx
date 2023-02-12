@@ -6,7 +6,7 @@ type Props = {
   repositories: RepositoryDetailItem[];
 };
 
-const TodoList: FunctionComponent<Props> = ({ repositories }) => {
+const RepositoryList: FunctionComponent<Props> = ({ repositories }) => {
   return (
     <>
       <h2 className="py-3 text-2xl font-semibold">Repositories</h2>
@@ -16,11 +16,11 @@ const TodoList: FunctionComponent<Props> = ({ repositories }) => {
             <RepositoryItem key={repository.id} repository={repository} />
           ))
         ) : (
-          <div>No added more repositories..</div>
+          <div>추가된 레포지토리가 없습니다. 검색을 통해 추가해주세요.</div>
         )}
       </div>
     </>
   );
 };
 
-export default TodoList;
+export default RepositoryList;

@@ -72,7 +72,11 @@ const AutoComplete: FunctionComponent<Props> = ({
       <Autocomplete
         ref={keywordRef}
         icon={<BsGithub size={16} />}
-        label="Choose repository you have searched."
+        label={
+          <span className="font-semibold">
+            검색한 깃허브 레포를 선택해 추가해 주세요.
+          </span>
+        }
         placeholder="Search github repositories.."
         itemComponent={AutoCompleteItem}
         onChange={handleInputChange}

@@ -24,9 +24,13 @@ const IssueList: FunctionComponent<Props> = ({ owner, repo, activePage }) => {
         <LoadingOverlay visible={!issueList} overlayBlur={2} />
         <h2 className="py-3 text-2xl font-semibold">Related Issues</h2>
         <div className="relative mb-4 grid w-fit grid-cols-1 gap-2">
-          {(issueList || []).map((issueItem) => {
-            return <IssueItem key={issueItem.id} issueItem={issueItem} />;
-          })}
+          {issueList && issueList.length > 0 ? (
+            issueList.map((issueItem) => (
+              <IssueItem key={issueItem.id} issueItem={issueItem} />
+            ))
+          ) : (
+            <div>확인된 이슈 사항들이 없습니다.</div>
+          )}
         </div>
       </div>
     </div>
