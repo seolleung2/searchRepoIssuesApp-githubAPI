@@ -1,3 +1,5 @@
+export const PAGE_SIZE = 5;
+
 export interface IssueParams {
   owner: string;
   repo: string;

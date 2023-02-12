@@ -8,10 +8,9 @@ type Props = {
 };
 
 const Header: FunctionComponent<Props> = ({ pageTitle }) => {
-  const date = new Date();
   const router = useRouter();
 
-  const { route } = router;
+  const { route, query } = router;
 
   const handleBackToMainPage = () => {
     router.push('/');
@@ -34,9 +33,17 @@ const Header: FunctionComponent<Props> = ({ pageTitle }) => {
             [Repository issue tracker App]
           </span>{' '}
           <br />
-          <span className="text-sm text-slate-400 sm:text-base">
-            Let&apos;s search anything you want using Github API🌷
-          </span>
+          <>
+            {route === '/' ? (
+              <span className="text-sm text-slate-400 sm:text-base">
+                Let&apos;s search anything you want using Github API🌷
+              </span>
+            ) : (
+              <span className="text-base font-semibold line-clamp-1 sm:text-base">
+                Repo : {query.owner}/{query.repo}
+              </span>
+            )}
+          </>
         </p>
       </div>
     </div>
