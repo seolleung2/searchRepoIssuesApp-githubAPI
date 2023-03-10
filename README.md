@@ -1,1 +1,0 @@
-# GITHUB API TOKEN 없이 미작동
